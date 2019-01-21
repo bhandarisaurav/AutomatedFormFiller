@@ -12,6 +12,7 @@ def fill_survey():
         print("Got your Email as : " + usr)
         pas = passwordbox("Enter Your Password:", "Enter Your password")
         print("Got your pass....")
+        url = enterbox("Enter the Feedback URL:", "Enter URL")
         startTime = datetime.now()
         driver = webdriver.Chrome(executable_path='chromedriver.exe')
         driver.get("http://accounts.google.com")
@@ -30,9 +31,7 @@ def fill_survey():
         nextss.click()
 
         time.sleep(3)
-
-        driver.get(
-            "https://docs.google.com/forms/d/e/1FAIpQLSeGXUs17bUWilur6cWyNNco_XOHZJQB-sea4BwE0egphWENzg/viewform?vc=0&c=0&w=1")
+        driver.get(url)
         section = driver.find_elements_by_xpath("//*[@role='radio']")[1]
         section.click()
 
