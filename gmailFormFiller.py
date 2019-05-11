@@ -9,12 +9,13 @@ def fill_survey():
     x = 1
     if x:
         usr = enterbox("Enter Your Email / Phone no", 'Phone no / Email')
+
         print("Got your Email as : " + usr)
         pas = passwordbox("Enter Your Password:", "Enter Your password")
         print("Got your pass....")
         url = enterbox("Enter the Feedback URL:", "Enter URL")
         startTime = datetime.now()
-        driver = webdriver.Chrome(executable_path='chromedriver.exe')
+        driver = webdriver.Chrome()
         driver.get("http://accounts.google.com")
         time.sleep(3)
         username = driver.find_element_by_id("identifierId")
@@ -32,13 +33,13 @@ def fill_survey():
 
         time.sleep(3)
         driver.get(url)
-        section = driver.find_elements_by_xpath("//*[@role='radio']")[1]
-        section.click()
+        # section = driver.find_elements_by_xpath("//*[@role='button']")[0]
+        # section.click()
 
         button = driver.find_element_by_xpath("//*[@role='button']")
         button.click()
         for i in range(0, 8):
-            final = 61
+            final = 49
             # if i == 7: final = 56
             for j in range(0, final, 5):
                 field = driver.find_elements_by_xpath("//*[@role='radio']")[j]
